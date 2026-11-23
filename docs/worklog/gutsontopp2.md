@@ -16,4 +16,9 @@ Append-only, newest at the bottom. Format and rules: "Work log" in `CLAUDE.md`.
   as its workspace, sync is run by hand with `bash .claude/hooks/git-sync.sh push`.
 - Docs: added the "Work log" section to `CLAUDE.md`, created this file, and rewrote the stale "Auto-commit hooks (not
   ported)" section of `docs/claude/agent-workflow.md` (it said the project had no git repo and no hook).
+- Verified end to end: ran `git-sync.sh push` once with `bash -x`. It committed the three files above as
+  `Auto-sync: ...` under this identity, pushed, and local `HEAD` matched `git ls-remote origin main`. Push access for
+  the stored GitHub login is confirmed.
 - Not touched: Roblox Studio (nothing connected, nothing edited), game scripts, the `.coop/` files, Play mode.
+- Open: the hook's commit trailer is hard-coded to `Co-Authored-By: Claude Opus 5.5`, which names the wrong model for
+  sessions running on another one. Left as is because the script is shared with the other machine.
