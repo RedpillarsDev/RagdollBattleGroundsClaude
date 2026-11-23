@@ -19,16 +19,19 @@ Battlegrounds before relying on it**, and update the notes when the new game div
 - Other Studios are often connected at the same time (Pillow Battles places such as `PillowBattles PROD` and
   `☁️Pillow Battles☁️ [BETA]`, `GPT Playground`, `SCE1`, `VFX Corner`, ...). **Never edit them** from this project, even
   if one is the only place listed. Reading one for reference is fine when Redpillars asks for it.
-- Part-built maps/props: use the `building` skill (`.claude/skills/building/SKILL.md`). Ask Redpillars which place
-  building happens in before the first build. (In Pillow Battles, building was in a separate playground place,
-  never in the game place.)
+- **Building place: not decided yet.** Part-built maps/props use the `building` skill
+  (`.claude/skills/building/SKILL.md`). Ask Redpillars which place building happens in before the first build, then
+  record it here. (In Pillow Battles it was `GPT Playground`, never the game place. If Redpillars picks that again,
+  it becomes the one exception to the rule above, for building only.)
 
 ## No local source — everything lives inside Roblox Studio
 
 This directory holds notes, skills and agent-coordination files, not game source. It is **live-synced to GitHub**
 (`RedpillarsDev/RagdollBattleGroundsClaude`) by `.claude/hooks/git-sync.sh`: SessionStart pulls, every Write/Edit
 and every Stop commits and pushes everything (`Auto-sync: ...` commits). Don't hand-commit these files, and keep
-secrets and `settings.local.json` out of the folder (it is gitignored). The game code (Scripts,
+secrets and `settings.local.json` out of the folder (it is gitignored).
+
+The game code (Scripts,
 ModuleScripts, LocalScripts, all instances) lives in the open Studio place and is only reachable through the
 **Roblox Studio MCP tools** (`Roblox_Studio` server, local scope, added 2026-11-23), not Read/Edit/Grep/Bash:
 
