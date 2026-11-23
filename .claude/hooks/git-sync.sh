@@ -42,7 +42,7 @@ fi
 
 # ---- push ----
 if [ -n "$(git status --porcelain)" ]; then
-	git add -A
+	git add -A > /dev/null 2>&1
 	Changed=$(git diff --cached --name-only | head -5 | tr '\n' ' ')
 	Count=$(git diff --cached --name-only | wc -l | tr -d ' ')
 	[ "$Count" -gt 5 ] && Changed="$Changed(+$((Count - 5)) more)"

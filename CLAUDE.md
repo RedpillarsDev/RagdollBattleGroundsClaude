@@ -25,7 +25,10 @@ Battlegrounds before relying on it**, and update the notes when the new game div
 
 ## No local source — everything lives inside Roblox Studio
 
-This directory holds notes, skills and agent-coordination files, not game source. The game code (Scripts,
+This directory holds notes, skills and agent-coordination files, not game source. It is **live-synced to GitHub**
+(`RedpillarsDev/RagdollBattleGroundsClaude`) by `.claude/hooks/git-sync.sh`: SessionStart pulls, every Write/Edit
+and every Stop commits and pushes everything (`Auto-sync: ...` commits). Don't hand-commit these files, and keep
+secrets and `settings.local.json` out of the folder (it is gitignored). The game code (Scripts,
 ModuleScripts, LocalScripts, all instances) lives in the open Studio place and is only reachable through the
 **Roblox Studio MCP tools** (`Roblox_Studio` server, local scope, added 2026-11-23), not Read/Edit/Grep/Bash:
 
