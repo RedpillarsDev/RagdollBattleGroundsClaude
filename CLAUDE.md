@@ -47,6 +47,19 @@ Studio MCP gotchas: `docs/claude/agent-workflow.md`. The most important one: **d
 `execute_luau` hit the play-mode DataModel and return stale source with no error.** Stop play and confirm Edit
 mode with `get_studio_state` before verifying an edit landed.
 
+## Work log
+
+Every session keeps a running record of what it does. After each meaningful step (a script or Studio edit, a decision,
+a new gotcha, anything left half-done), append an entry to `docs/worklog/<author>.md`, where `<author>` is the GitHub
+login in `git config user.name`. One file per person, so two people's sessions never write the same file. Append-only,
+newest at the bottom; never edit someone else's file. Entry format:
+
+    ## YYYY-MM-DD | <short title>
+    What changed and where (place, instance dot-path, file). What was verified and what was not. What's pending, and whose call.
+
+The repo is public: no secrets, emails or local machine paths in entries. The log says what happened and why; lasting
+knowledge about a system still goes in the matching `docs/claude/` note.
+
 ## Prompt prefix: "CoWork"
 
 When a prompt starts with **"CoWork"**, Redpillars is editing the place at the same time as you. Edit scripts as

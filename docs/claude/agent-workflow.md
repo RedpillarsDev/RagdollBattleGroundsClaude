@@ -156,11 +156,28 @@ claim" row to `STUDIO.md` naming the path, the line, the consequence, and that y
 4. Tail `.coop/to-claude.md` and `.coop/STUDIO.md` (if Codex is in use).
 5. Before any playtest: peer yes (and Redpillars' yes on CoWork), `STUDIO.md` row, PLAYTEST START.
 
-## Auto-commit hooks (Pillow Battles setup, not ported)
+## Live sync to GitHub (`.claude/hooks/git-sync.sh`)
 
-Pillow Battles' `.claude/settings.json` had a `PostToolUse` hook on `Write|Edit`: if the edited path was `CLAUDE.md` or
-a `docs/claude/*.md` file, it ran `git add` + `git commit -m "Auto-update Claude notes"` + `git push origin main`, so
-notes were backed up the moment they changed. Codex's `.codex/hooks.json` had the same idea for its notes, but its grep
-matched `CLAUDE.md` while its status message said "Pushing AGENTS.md" (a copy-paste bug: AGENTS.md edits weren't
-pushed). Not set up here: this project has no git repo yet. If Redpillars wants it, add it with the `update-config`
-skill once the repo exists, and make each agent's hook match its own notes files.
+This folder is live-synced with `RedpillarsDev/RagdollBattleGroundsClaude`. `.claude/settings.json` wires one script,
+`.claude/hooks/git-sync.sh`, to three events:
+
+- **SessionStart** runs `git-sync.sh pull` (`pull --rebase --autostash`).
+- **Every Write/Edit/MultiEdit/NotebookEdit and every Stop** runs `git-sync.sh push`: `git add -A`, commit
+  `Auto-sync: <files>`, rebase on the remote, push. A `mkdir` lock (`.git/claude-sync.lock`) serialises concurrent
+  runs from subagents and parallel sessions.
+
+(This replaces Pillow Battles' narrower hook, which only committed `CLAUDE.md` and `docs/claude/*.md`.)
+
+**The script fails silently by design** (all git output goes to `/dev/null`, and it always exits 0), so on a new
+machine check these before trusting it:
+
+1. **Git identity.** `user.name` / `user.email` must be set, or the commit fails and nothing is ever pushed. The repo
+   is public, so set them repo-locally (`git config --local`) to a GitHub noreply address, never a personal email.
+2. **Non-interactive push auth.** The script sets `GIT_TERMINAL_PROMPT=0`, so Git Credential Manager must already
+   hold a login with push access.
+3. **The hooks must be loaded.** They only run when the Claude session's workspace folder is this repo. A session
+   opened in a parent folder never fires them: run `bash .claude/hooks/git-sync.sh push` by hand after edits.
+4. **Verify end to end:** `git rev-parse HEAD` must equal `git ls-remote origin main`.
+
+Everything in the folder is pushed to a **public** repo, so keep secrets, emails and local machine paths out of notes.
+The running record of what each session did lives in `docs/worklog/` (see "Work log" in `CLAUDE.md`).
