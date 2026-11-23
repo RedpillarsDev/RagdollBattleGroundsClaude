@@ -27,7 +27,7 @@ Funnel/event mechanics are in `economy-and-analytics.md`. HUD hiding is in `ui-a
 The sequence: hit Dummy 1 off the map (basic attack) → Dummy 2 (ability only) → starter ability pick (3 cards) → reward reveal → a short private round vs easy NPCs → winner panel → guided purchase + equip of a starter item in the lobby shop → guide to the queue → **the first real round entry completes it.**
 - **Training dummies never die.** They're healed after every hit and **destroyed** at a depth below the anchor, before the global out-of-bounds kill, so they never pay kill rewards. Shoved off by the wrong source, a dummy respawns. Check the source through a `LastHitSource` attribute that the ability stamps on its victim.
 - **Fake the kill feedback:** a counted knock-off bumps a `TutorialKills` attribute. The client plays the real kill VFX, a non-positional death sound and a camera shake.
-- **The first dummy at 50% health, launch scaled ×0.5:** low health amplified knockback 5x and it flew 500 studs. Compensate whenever a ragdoll/knockback system scales with health.
+- **The first dummy at 50% health, launch scaled ×0.5:** the low-health amplifier doubles knockback at half health, and the dummy flew ~500 studs. With the ×0.5 scale it went ~100 (distance isn't linear in force). Compensate whenever knockback scales with health.
 - **Force controls per phase** (attack on and ability off, then the reverse), and put the inventory slot's Lock overlay over the disabled HUD control. Halve the ability cooldown for the session with a temporary stat modifier.
 - **Every step has a far line AND a near line** in the banner ("Walk to the Dummy!" / "Hit the Dummy off the map!"). A step with no text until in range felt broken.
 - **Guides:**

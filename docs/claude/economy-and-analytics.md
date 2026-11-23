@@ -39,12 +39,7 @@
   - Publish shop state as Attributes on a `ReplicatedStorage.ShopState` instance (`<Tab>Offers` "Id,Id,Id", `NextResetAt`, `Overridden`). A watcher restocks at the reset and broadcasts "The Shop has restocked!".
   - Publishing a catalog change mid-day changes the roll on new servers only. Old servers keep theirs until the reset.
   - Admin `!Shop Reroll` / `!Shop Reset` (per server, Admin+, server-checked).
-- **One pricing authority:** the purchase handler prices only through `ShopService.Server.GetPrice`. The order of checks:
-  1. Owned (non-session): refused.
-  2. Not priceable: "That isn't for sale!".
-  3. Level lock.
-  4. Cash.
-  A live offer sells at the discount wherever it's bought (card or grid), even when `ForSale` is false.
+- **One pricing authority:** the purchase handler prices only through `ShopService.Server.GetPrice`. All checks run before cash is touched: priceable (else "That isn't for sale!"), level lock ("Reach Level %d to buy this!"), not already owned (session copies ignored), then affordable. The Pillow Battles notes disagree on whether ownership is checked before or after pricing, so read the handler. A live offer sells at the discount wherever it's bought (card or grid), even when `ForSale` is false.
 - **Level locks:** below `RequiredLevel`, the grid shows the slot's Lock and the button reads "LV. n". **A special offer ignores the lock.** The Robux button is hidden below the level **client-side only**: the server can't tell where a receipt came from, and refusing a paid receipt is wrong. Never lock the tutorial's starter item.
 - **Redpillars' shop UX calls:** cash buys have no confirmation. Unaffordable prices are red with a black outline. OWNED stays green and unpressable (no grey-out). Offers show the full price crossed out (RichText) before the offer price. Daily offer cards are never red.
 - **"Quick buy" elsewhere** (in the inventory): send the shop's own purchase request so the same server pricing applies.
