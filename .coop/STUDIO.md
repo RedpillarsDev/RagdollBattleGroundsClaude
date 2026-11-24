@@ -22,6 +22,7 @@ model name and the X range.
 | Path / area | Place | Agent | Since |
 |---|---|---|---|
 | Pillow Battles port: `ServerStorage.TEMP_PBImport` (staging) and everything it moves into: RS.System, RS.Networking, RS.Data, RS.Types, RS.Design, RS.Storage, RS._GameConfig, SSS, ServerStorage.System, SPS, StarterGui.Main, ReplicatedFirst.LoadingScreen | Ragdoll Battlegrounds | Claude (ragdollengine-42) | 2026-11-23 |
+| `Workspace.Map.RagdollPark` (X 2600..3400, Z -400..400) + `ServerStorage.ClaudeParkKit` + `ServerStorage.RagdollParkAssets` | Ragdoll Battlegrounds | Claude (Guts' session, claude-6c) | 2026-11-23 |
 
 Re-read anything another agent has claimed before editing it, and **never revert their work**: raise it instead.
 Redpillars also edits live, so a script can differ from what any agent last wrote without any of them touching it.
