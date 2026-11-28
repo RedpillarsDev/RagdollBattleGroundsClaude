@@ -16,3 +16,19 @@
   `ServerStorage.TEMP_PBImport` in Ragdoll Battlegrounds, then moved into place and stripped of Pillow content.
 - Claimed the port paths in `.coop/STUDIO.md`.
 - Pending: Redpillars' Ctrl+C / Ctrl+Shift+V.
+
+## 2026-11-28 | Game principles and roadmap v1
+
+- Redpillars' four calls: core game = **physics chaos sandbox** (Ragdoll Park direction, not a moveset brawler or
+  round-based); combat = **easy + chaotic**; money = **earn power, buy style**; next milestone = **fun-first prototype,
+  no date**.
+- New files: `docs/game/principles.md` (pitch, decisions, 7 pillars, tie-breakers, non-goals) and
+  `docs/game/roadmap.md` (current state, Phases 0-4 with playtest gates, live ops, open questions). The pillars and phase
+  contents are Claude's draft from those calls, pending Redpillars' edits.
+- `CLAUDE.md` and `AGENTS.md`: the intro now says "chaos sandbox" and a short "Game direction" section points at both
+  files.
+- Read-only scan of the Ragdoll Battlegrounds place (Edit mode, nothing changed): 25 ported services, no combat,
+  ragdoll or round scripts, RagdollPark static.
+- Open (Redpillars' calls, listed in the roadmap): HP/KOs or hazard-only deaths, keep the "Battlegrounds" name, the
+  three player verbs, server size, paid cosmetic RNG, building place. Phase 0 blocker: Guts' park textures and meshes
+  are local-only.
