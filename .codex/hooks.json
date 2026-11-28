@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash 'C:\\Users\\betee\\Desktop\\Claude\\RagdollEngine\\.codex\\hooks\\git-sync.sh' pull",
+            "timeout": 60,
+            "statusMessage": "Pulling latest notes from GitHub..."
+          }
+        ]
+      }
+    ]
+  }
+}
