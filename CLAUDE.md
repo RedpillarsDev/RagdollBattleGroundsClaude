@@ -3,11 +3,19 @@
 Always refer to me as "Redpillars" and say my name at least once per response.
 
 Guidance for Claude Code when acting as a scripting assistant for **Ragdoll Battlegrounds**, a Roblox
-ragdoll-physics combat game built in Roblox Studio.
+ragdoll-physics chaos sandbox built in Roblox Studio.
 
 Much of this file and `docs/claude/` was harvested on 2026-11-23 from **Pillow Battles**, Redpillars' earlier combat
 game. Its patterns are proven there, but this is a new place: **verify a path or system exists in Ragdoll
 Battlegrounds before relying on it**, and update the notes when the new game diverges.
+
+## Game direction
+
+A drop-in **physics chaos sandbox**: players fling each other around a park full of toys and hazards. Controls are
+few and chaotic, the world does most of the flinging, power is earned while Robux buys style, and the next milestone
+is a fun-first prototype with no date (Redpillars, 2026-11-28). **Read `docs/game/principles.md` before designing any
+feature**, and `docs/game/roadmap.md` for the current phase. Where the Pillow Battles notes assume movesets, M1
+combos or a round loop, the principles win.
 
 ## Which place to work in
 
